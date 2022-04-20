@@ -48,9 +48,8 @@ console.log("Você se cansou muito hoje?", estaCansado)
 console.log("Vai dormir bem para descansar?", vaiDescansar)*/
 
 //03
-let a = 10
+/*let a = 10
 let b = 25
 
 console.log("O novo valor de a é", b)
-console.log("O novo valor de b é", a)
-
+console.log("O novo valor de b é", a)*/
