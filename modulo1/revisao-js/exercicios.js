@@ -31,7 +31,6 @@ function retornaNumerosPares(array) {
     let pares = array.filter(numerosPares)
     return pares
 }
-retornaNumerosPares()
 
 // EXERCÍCIO 05
 function retornaNumerosParesElevadosADois(array) {
@@ -56,65 +55,112 @@ function retornaMaiorNumero(array) {
         }}
         return numeroMaior
 }
-retornaMaiorNumero()
 
 // EXERCÍCIO 07
 function retornaObjetoEntreDoisNumeros(num1, num2) {
     const objetos = {
-    maiorNumero : Math.max(num1, num2),
-    maiorDivisivelPorMenor : Math.max(num1, num2)%Math.min(num1, num2)===0,
-    diferenca : (Math.max(num1, num2)-Math.min(num1, num2))}
+    "maiorNumero" : Math.max(num1, num2),
+    "maiorDivisivelPorMenor" : Math.max(num1, num2)%Math.min(num1, num2)===0,
+    "diferenca" : (Math.max(num1, num2)-Math.min(num1, num2))}
     return objetos
 }
-retornaObjetoEntreDoisNumeros()
 
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
-   
 }
 
 // EXERCÍCIO 09
 function classificaTriangulo(ladoA, ladoB, ladoC) {
-    
+    let triangulo
 
-}
+    if (ladoA === ladoB && ladoB === ladoC && ladoA === ladoC ){triangulo = "Equilátero"} 
+    else if (ladoA !== ladoB && ladoB !== ladoC && ladoC !==ladoA){triangulo = "Escaleno"}
+    else {triangulo = "Isósceles"}
+        return triangulo
+} 
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
-  
+        function compararNumeros(a, b) {
+          return a - b;
+        }
+        array.sort(compararNumeros)
+        
+        let segundoMaior = array[array.length-2]
+        let segundoMenor = array[1]
+        
+        return [segundoMaior, segundoMenor]
 }
 
 // EXERCÍCIO 11
 function retornaChamadaDeFilme(filme) {
-   
+    return `Venha assistir ao filme ${filme.nome}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${filme.atores.join([`, `])}.`
 }
 
 // EXERCÍCIO 12
 function retornaPessoaAnonimizada(pessoa) {
-   
+    const pessoaAnonimizada = {...pessoa,
+        nome: "ANÔNIMO"
+    }
+    return pessoaAnonimizada
 }
 
 // EXERCÍCIO 13A
 function retornaPessoasAutorizadas(pessoas) {
-   
-}
+    const arrayPessoasAutorizadas = []
+        for (let pessoa of pessoas)
+        if(
+            pessoa.altura>=1.5 &&
+            pessoa.idade>14 &&
+            pessoa.idade<=60
+        ){
+            arrayPessoasAutorizadas.push(pessoa)
+        }
+        return arrayPessoasAutorizadas
+    } 
 
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
-  
+    const arrayPessoasNaoAutorizadas = []
+        for (let pessoa of pessoas)
+        if(
+            pessoa.altura<1.5 ||
+            pessoa.idade<=14 ||
+            pessoa.idade>60
+        ){
+            arrayPessoasNaoAutorizadas.push(pessoa)
+        }
+        return arrayPessoasNaoAutorizadas
 }
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
-
+ /*   
+    let somaCompras = 0;
+    for (let i=0;  i<contas.compras.length;  i++){
+        somaCompras += contas[i]
+    }
+    
+    const retornarSaldoAtualizado = {...contas,
+        saldoTotal: somaCompras
+    }
+    return retornarSaldoAtualizado*/
 }
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-  
+    const ordemAlfabetica = consultas.sort(function(a,b){
+        if (a.nome>b.nome){return 1}
+        if (a.nome<b.nome){return -1}
+    })
+    return ordemAlfabetica
 }
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
-   
+
+    
+    
+    
+    
 }
