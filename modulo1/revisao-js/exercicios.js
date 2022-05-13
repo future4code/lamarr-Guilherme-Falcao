@@ -135,16 +135,7 @@ function retornaPessoasNaoAutorizadas(pessoas) {
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
- /*   
-    let somaCompras = 0;
-    for (let i=0;  i<contas.compras.length;  i++){
-        somaCompras += contas[i]
-    }
-    
-    const retornarSaldoAtualizado = {...contas,
-        saldoTotal: somaCompras
-    }
-    return retornarSaldoAtualizado*/
+ 
 }
 
 // EXERCÍCIO 15A
@@ -158,9 +149,5 @@ function retornaArrayOrdenadoAlfabeticamente(consultas) {
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
-
-    
-    
-    
-    
+   
 }
