@@ -1,0 +1,15 @@
+Os 7 passos fundamentais pra resolução de problemas são cruciais para nos ajudar a não nos perder no desenrolar do projeto, definir um ponto de partida e ir seguindo os passos até a solução do problema.
+
+1. Ter atenção no enunciado é de suma importância pois é o ponto de partida e onde vai te dar as informações iniciais pro nosso código;
+
+2. Retirar informações relevantes consiste em pegar as informações iniciais do passo 1 e separar palavras chave, e já ir decidindo como vão se posicionar dentro do código em formato de variáveis, funções etc.;
+
+3. Após retirar as palavras chaves e infos importantes já pensar nas entradas e saídas, como vai entrar os dados recebidos, e como serão as respostas na saída;
+
+4. Algumas pessoas sentem mais facilidade vendo e usando exemplos visuais, então criar exemplos, diagramas usando diversas ferramentas ajuda entender melhor o que vai entrar e o que vai sair no código;
+
+5. Criar um código feio consiste em colocar de forma mais informal e direta pra testar diversas formas e ver se alguma delas chega na solução do problema;
+
+6. Escrever no nosso idioma facilita muito na identação, e para saber de onde esta vindo pra onde quer ir dentro do código, depois só reescrever na linguagem desejada;
+
+7. Importante você criar funções e variáveis com nomes claros e completos. Depois poder voltar e refatorar, refazer os codigos usando maneiras mais simplificadas após descobrir novas funções para “enxugar” mais seu código.
