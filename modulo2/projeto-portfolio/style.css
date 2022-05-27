@@ -1,0 +1,23 @@
+/*   CORES DO SITE
+    Cinza= 2c3639 • Cinza esver= 3f4e4f • Cinza clarim= c2c8c6   
+    Marrom alaranj= 966844 • Bege= dcd7c9 • Branco= f6f5f1          */
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #dcd7c9;
+}
+nav{
+    margin-top: 15px;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+main{
+    margin-top: 35px;
+    color: #3f4e4f;
+    font-size: 52px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center
+}
