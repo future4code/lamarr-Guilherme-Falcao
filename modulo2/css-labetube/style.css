@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    display: grid;
+    height: 60vh;
+    width: 90vw;
+    margin: 0 auto;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: start;
+    align-items: center;
+}
+
+header{
+    background-color: #ef843a;
+}
+
+footer{
+    background-color: #323b3e;
+    color: white;
+    font-size: 28px;
+    font-family: Bernard MT Condensed;
+    text-align: left;
+    padding: 25px;
+}
+
