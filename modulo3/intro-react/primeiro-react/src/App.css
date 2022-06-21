@@ -1,0 +1,15 @@
+.App{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.perfil{
+  width: 30vw;
+}
+button{
+  margin-top: 20px;
+  padding: 8px;
+  font-size: 18px;
+}
+
