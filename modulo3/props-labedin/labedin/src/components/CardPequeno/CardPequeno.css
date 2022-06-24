@@ -1,0 +1,21 @@
+.small-card-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 50px;
+    width: 550px;
+    padding: 15px 30px;
+    margin: 10px auto;
+}
+
+.small-card-container > img {
+    width: 35px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.small-gard-container > div {
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-start;
+}
