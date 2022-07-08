@@ -4,8 +4,49 @@ import { useState } from 'react';
 import Post from './components/Post/Post';
 import './style.css'
 
+const Form = styled.div`
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+padding: 10px;
+margin: 3px;
+background-color: lightseagreen;
+border-radius: 20px;
+width: 21vw;
+
+ label{
+  padding: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:20px;
+}
+input{
+  text-align: center;
+  height:5vh;
+  width:15vw;
+  border-radius:10px;
+  font-style:bold;
+} 
+button{
+  font-weight:bold;
+  font-size:large;
+  margin-top:10px;
+  width:8vw;
+  height:7vh;
+  border-radius:40px;
+}
+button:hover{
+  cursor:pointer;
+  background-color: orange;
+  transition: 0.5s;
+} 
+`
+
 function App() {
-  const arrayPost = [
+    const [inputUser, setInputUser] = useState("")
+    const [inputPhotoPost, setInputPhotoPost] = useState("")
+    const [inputPhotoUser, setInputPhotoUser] = useState("")
+    const [posts, setPosts] = useState([
     {
       nomeUsuario: `leozera`,
       fotoUsuario:
@@ -26,9 +67,30 @@ function App() {
         "https://media-exp2.licdn.com/dms/image/C4D03AQFFZSK7Q-8pTg/profile-displayphoto-shrink_200_200/0/1545754980434?e=1661990400&v=beta&t=pIB-Z6j22gRDCjSybHMgHKOlntDe23P5HBKPqvoWyx8",
       fotoPost:
         "https://images.unsplash.com/photo-1471180625745-944903837c22?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fG5hdHVyZXxlbnwwfDJ8MHx8&auto=format&fit=crop&w=500&q=60",
-    },
-  ];
-  const listaDePosts = arrayPost.map((elemento, index) => {
+    },      
+  ]);
+
+  // eventos
+
+  const handleInputUser = (event) => {
+    setInputUser(event.target.value)
+  }
+
+  const handleInputPhotoPost = (event) => {
+    setInputPhotoPost(event.target.value)
+  }
+
+  const handleInputPhotoUser = (event) => {
+    setInputPhotoUser(event.target.value)
+  }
+
+// adicionar publicação
+const publish = () => {
+  const makeNewPost = {nomeUsuario: inputUser, fotoPost: inputPhotoPost,fotoUsuario: inputPhotoUser}
+  const newPost = [...posts,makeNewPost]
+  setPosts(newPost)}
+
+  const listaDePosts = posts.map((elemento, index) => {
     return (
       <Post
         nomeUsuario={elemento.nomeUsuario}
@@ -39,7 +101,30 @@ function App() {
     );
   });
 
-  return <div className="MainContainer">{listaDePosts}</div>;
-}
+  return (<div className="MainContainer">{listaDePosts}
+  
+  <Form>
+  <label>Nome:</label>
+  <input type="text"
+    placeholder="Insira seu nome de usuário"
+    value={inputUser}
+    onChange={handleInputUser}
+    /> 
+  <label>Foto:</label>
+  <input type="img"
+    placeholder="Insira uma url de imagem"
+    value={inputPhotoPost}
+    onChange={handleInputPhotoPost}
+    /> 
+  <label>Foto de usuário:</label>
+  <input type="img"
+    placeholder="Insira uma url de imagem"
+    value={inputPhotoUser}
+    onChange={handleInputPhotoUser}
+    /> 
+     <button onClick={publish}>Postar</button> 
+     </Form>
 
+    </div>)
+}
 export default App;
