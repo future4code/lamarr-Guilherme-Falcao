@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import trocaTela, { Homepage } from "../Home/Homepage";
 import {
   ButtonRed,
   ButtonGreen,
@@ -14,7 +13,7 @@ import {
 import { getProfile } from "../Constantes/index";
 import axios from "axios";
 
-export function Cards() {
+export function Cards(props) {
   const [profile, setProfile] = useState([]);
 
   useEffect(() => {
@@ -41,7 +40,7 @@ export function Cards() {
     <Container>
       <Header>
         <h1>astromatch</h1>
-        <ButtonMatches onClick={() => Homepage()}>Matches</ButtonMatches>
+        <ButtonMatches onClick={()=>(props.trocaTela)}>Matches</ButtonMatches>
       </Header>
         <Img src={profile.photo} />
         <NameAge>

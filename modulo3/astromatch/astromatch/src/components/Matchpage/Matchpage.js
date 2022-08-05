@@ -3,7 +3,7 @@ import { ButtonHome, Container, ImgMatch } from "./style";
 import axios from "axios";
 import { Cards } from "../Cards/Cards";
 
-export function Matchpage() {
+export function Matchpage(props) {
   const [matches, setMatches] = useState([]);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export function Matchpage() {
 
   return (
     <Container>
-      <ButtonHome>Home</ButtonHome>
+      <ButtonHome onClick={()=>(props.trocaTela)}>Home</ButtonHome>
       <div>
         {matches.map((match) => (
           <ul>
