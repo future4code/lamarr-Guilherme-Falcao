@@ -1,14 +1,11 @@
-import './App.css';
-import { Homepage } from './components/Home/Homepage';
-import { Cards } from './components/Cards/Cards';
+import "./App.css";
+import { Homepage } from "./components/Home/Homepage";
 
 function App() {
   return (
     <div>
-      <Homepage/>
-      <Cards/>
+      <Homepage />
     </div>
   );
 }
-
 export default App;

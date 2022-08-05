@@ -1,14 +1,61 @@
-import { ButtonRed, ButtonGreen, Container, Img } from "./style"
+import React, { useState, useEffect } from "react";
+import trocaTela, { Homepage } from "../Home/Homepage";
+import {
+  ButtonRed,
+  ButtonGreen,
+  Container,
+  Img,
+  Header,
+  NameAge,
+  Bio,
+  Buttons,
+  ButtonMatches,
+} from "./style";
+import { getProfile } from "../Constantes/index";
+import axios from "axios";
 
-export function Cards (props) {
-    return (
-        <Container>
-            <Img src="https://criticalhits.com.br/wp-content/uploads/2021/07/Rubeo-Hagrid-6.jpg" alt="foto do usuário" ></Img>
-            <h2>Hagrid</h2>
-            <h2>94</h2>
-            <p>guarda-caça e Guardião das Chaves e Terrenos de Hogwarts</p>
-            <ButtonRed>Hoje não, faro</ButtonRed>
-            <ButtonGreen>Hoje sim!</ButtonGreen>
-        </Container>
-    )
+export function Cards() {
+  const [profile, setProfile] = useState([]);
+
+  useEffect(() => {
+    getProfile(setProfile);
+  }, []);
+
+  async function CreateMatch(id) {
+    try {
+      const response = await axios.post(
+        "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/guilherme/choose-person",
+        {
+          id: id,
+          choice: true,
+        },
+        {}
+      );
+      getProfile(setProfile);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  return (
+    <Container>
+      <Header>
+        <h1>astromatch</h1>
+        <ButtonMatches onClick={() => Homepage()}>Matches</ButtonMatches>
+      </Header>
+        <Img src={profile.photo} />
+        <NameAge>
+          {profile.name}, {profile.age}
+        </NameAge>
+        <Bio>{profile.bio}</Bio>
+      <Buttons>
+        <ButtonRed onClick={() => getProfile(setProfile)}>
+          Hoje não, faro
+        </ButtonRed>
+        <ButtonGreen onClick={() => CreateMatch(profile.id)}>
+          Hoje sim!
+        </ButtonGreen>
+      </Buttons>
+    </Container>
+  );
 }
