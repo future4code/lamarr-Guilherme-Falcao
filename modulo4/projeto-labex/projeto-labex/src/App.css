@@ -1,5 +1,8 @@
 *{
     text-align: center;
-    background-color: hotpink;
+    background-color: darkslategray;
     color: whitesmoke;
+}
+div{
+    border: 1px solid black;
 }
