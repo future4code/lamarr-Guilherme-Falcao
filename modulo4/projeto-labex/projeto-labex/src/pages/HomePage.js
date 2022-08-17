@@ -7,10 +7,6 @@ function HomePage() {
   return (
     <div>
       <h1>LabeX</h1>
-      <p>
-        HomePage.js → Para o usuário escolher entre Área Administrativa e Lista
-        de Viagens
-      </p>
 
       <button
         onClick={() => {
