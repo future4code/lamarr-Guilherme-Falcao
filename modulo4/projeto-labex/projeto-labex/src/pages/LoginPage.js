@@ -1,8 +1,9 @@
 import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { goToAdminHomePage, goToBack } from "../rotas/Coordinator";
+import { goToAdminHomePage, goToBack, goToHomePage } from "../rotas/Coordinator";
 import { useForm } from "../hooks/useRequestData";
+import { AllHeaders, HomeStyle, InputLogin, ButtonsHome } from "../pages/style";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -10,23 +11,28 @@ function LoginPage() {
   const [form, onChange, clear] = useForm({ email: "", password: "" });
 
   const login = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     axios
       .post(
         "https://us-central1-labenu-apis.cloudfunctions.net/labeX/guilherme_brazao_lamarr/login",
         form
       )
-      .then((response) => console.log(response.data))
-      .catch((error) => console.log(error.message));
+      .then((response) => {
+        localStorage.setItem("token", response.data.token);
+        navigate("/admin/trips/list")
+      })
+      .catch((error) => {
+        alert("Email e/ou senha incorretos", error.message);
+      });
     clear();
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <HomeStyle>
+      <AllHeaders>Login</AllHeaders>
       <form onSubmit={login}>
         <label htmlFor="email"></label>
-        <input
+        <InputLogin
           name="email"
           value={form.email}
           onChange={onChange}
@@ -34,10 +40,10 @@ function LoginPage() {
           type="email"
           placeholder="e-mail"
           required
-        ></input>
+        ></InputLogin>
         <br />
         <label htmlFor="password"></label>
-        <input
+        <InputLogin
           name="password"
           value={form.password}
           onChange={onChange}
@@ -45,25 +51,22 @@ function LoginPage() {
           type="password"
           placeholder="senha"
           required
-        ></input>
+        ></InputLogin>
         <br />
-        <button
+        <ButtonsHome
           onClick={() => {
-            goToBack(navigate);
+            goToHomePage(navigate);
           }}
         >
           Voltar
-        </button>
-        <button
+        </ButtonsHome>
+        <ButtonsHome
           type="submit"
-          onClick={() => {
-            goToAdminHomePage(navigate);
-          }}
         >
           Fazer login
-        </button>
+        </ButtonsHome>
       </form>
-    </div>
+    </HomeStyle>
   );
 }
 

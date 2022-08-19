@@ -1,28 +1,31 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { goToListTripsPage, goToLoginPage } from "../rotas/Coordinator";
+import { HomeStyle, ButtonsHome, NameHome } from "../pages/style";
 
 function HomePage() {
   const navigate = useNavigate();
   return (
-    <div>
-      <h1>LabeX</h1>
-
-      <button
+    <HomeStyle>
+      <NameHome>
+        <h1>LabeX</h1>
+        <ButtonsHome
         onClick={() => {
           goToListTripsPage(navigate);
         }}
       >
         Trips
-      </button>
-      <button
+      </ButtonsHome>
+      <ButtonsHome
         onClick={() => {
           goToLoginPage(navigate);
         }}
       >
         Admin
-      </button>
-    </div>
+      </ButtonsHome>
+      </NameHome>
+
+    </HomeStyle>
   );
 }
 

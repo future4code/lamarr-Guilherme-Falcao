@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../hooks/useRequestData";
 import { goToBack } from "../rotas/Coordinator";
+import { AllHeaders, HomeStyle, SelectStyle, InputStyle, ButtonsHome } from "../pages/style";
 
 function ApplicationFormPage() {
   const navigate = useNavigate();
@@ -28,33 +29,38 @@ function ApplicationFormPage() {
   };
 
   return (
-    <div>
-      <h2>Inscreva-se para uma viagem!</h2>
-      <select>
-        <option value="Escolha uma viagem">Escolha uma viagem</option>
-      </select>
+    <HomeStyle>
+      <AllHeaders>Inscreva-se para uma viagem!</AllHeaders>
+      <SelectStyle>
+        <option value="Escolha uma viagem" selected>Escolha uma viagem</option>
+        <option value="Multi luau em Jupiter">Multi luau em Jupiter</option>
+        <option value="Picnic de Inverno em Plutão">Picnic de Inverno em Plutão</option>
+        <option value="Surfando em Netuno">Surfando em Netuno</option>
+        <option value="Festança Marciana">Festança Marciana</option>
+      </SelectStyle>
       <form onSubmit={subscript}>
-        <input
+        <InputStyle
           name="name"
           value={form.name}
           onChange={onChange}
           id="name"
           type="text"
-          placeholder="nome"
+          placeholder="Nome"
           required
-        ></input>
+        ></InputStyle>
         <br />
-        <input
+        <InputStyle
           name="age"
           value={form.age}
           onChange={onChange}
           id="age"
           type="number"
           placeholder="Idade"
+          min={18}
           required
-        ></input>
+        ></InputStyle>
         <br />
-        <input
+        <InputStyle
           name="applicationText"
           value={form.applicationText}
           onChange={onChange}
@@ -62,9 +68,9 @@ function ApplicationFormPage() {
           type="text"
           placeholder="Texto de Candidatura"
           required
-        ></input>
+        ></InputStyle>
         <br />
-        <input
+        <InputStyle
           name="profession"
           value={form.profession}
           onChange={onChange}
@@ -72,9 +78,9 @@ function ApplicationFormPage() {
           type="text"
           placeholder="Profissão"
           required
-        ></input>
+        ></InputStyle>
         <br />
-      <select name="paises" id="paises">
+      <SelectStyle name="paises" id="paises">
         <option value="Escolha um País" selected="selected">
           Escolha um país
         </option>
@@ -106,6 +112,7 @@ function ApplicationFormPage() {
         <option value="Bielorrússia">Bielorrússia</option>
         <option value="Bolívia">Bolívia</option>
         <option value="Botswana">Botswana</option>
+        <option value="Brasil">Brasil</option>
         <option value="Brunei">Brunei</option>
         <option value="Bulgária">Bulgária</option>
         <option value="Burkina Faso">Burkina Faso</option>
@@ -113,7 +120,6 @@ function ApplicationFormPage() {
         <option value="Butão">Butão</option>
         <option value="Bélgica">Bélgica</option>
         <option value="Bósnia e Herzegovina">Bósnia e Herzegovina</option>
-        <option value="Brasil">Brasil</option>
         <option value="Cabo Verde">Cabo Verde</option>
         <option value="Camarões">Camarões</option>
         <option value="Camboja">Camboja</option>
@@ -352,18 +358,18 @@ function ApplicationFormPage() {
         <option value="Wallis e Futuna">Wallis e Futuna</option>
         <option value="Zimbabwe">Zimbabwe</option>
         <option value="Zâmbia">Zâmbia</option>
-      </select>
+      </SelectStyle>
       <br />
-      <button
+      <ButtonsHome
         onClick={() => {
           goToBack(navigate);
         }}
       >
         Voltar
-      </button>
-      <button type="submit">Enviar</button>
+      </ButtonsHome>
+      <ButtonsHome type="submit">Enviar</ButtonsHome>
     </form>
-    </div>
+    </HomeStyle>
   );
 }
 
