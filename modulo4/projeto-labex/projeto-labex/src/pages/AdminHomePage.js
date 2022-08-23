@@ -4,7 +4,6 @@ import { useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 import { AllHeaders, HomeStyle, ButtonsHome } from "../pages/style";
 import {
-  goToBack,
   goToCreateTripPage,
   goToHomePage,
   goToLoginPage,

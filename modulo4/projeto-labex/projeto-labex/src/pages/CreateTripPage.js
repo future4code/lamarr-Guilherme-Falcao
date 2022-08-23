@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { goToHomePage } from "../rotas/Coordinator";
 import useProtectedPage, { useForm } from "../hooks/useRequestData";
@@ -13,35 +12,8 @@ import {
 import axios from "axios";
 
 function CreateTripPage() {
-  const data = new Date();
-  const dia = String(data.getDate()).padStart(2, "0");
-  const mes = String(data.getMonth() + 1).padStart(2, "0");
-  const ano = data.getFullYear();
-  const dataAtual = dia + "/" + mes + "/" + ano;
-
   const navigate = useNavigate();
-
   useProtectedPage();
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    axios
-      .get(
-        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/guilherme_brazao_lamarr/trip/NoIFVcOiSgTKTIPVZwXS",
-        {
-          headers: {
-            auth: token,
-          },
-        }
-      )
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log("Deu erro: ", error.response);
-      });
-  }, []);
 
   const [form, onChange, clear] = useForm({
     name: "",
@@ -51,17 +23,30 @@ function CreateTripPage() {
     durationIndays: "",
   });
 
+  const token = localStorage.getItem("token");
+  const headers = {
+    headers: {
+      auth: token,
+    },
+  };
+
   const createTrip = (event) => {
     event.preventDefault();
     axios
       .post(
         "https://us-central1-labenu-apis.cloudfunctions.net/labeX/guilherme_brazao_lamarr/trips",
-        form
+        form,
+        headers
       )
-      .then((response) => console.log(response.data))
+      .then((response) => console.log(response.data), alert("Viagem enviada!"))
       .catch((error) => console.log(error.message));
     clear();
   };
+  // const data = new Date();
+  // const dia = String(data.getDate()).padStart(2, "0");
+  // const mes = String(data.getMonth() + 1).padStart(2, "0");
+  // const ano = data.getFullYear();
+  // const dataAtual = dia + "/" + mes + "/" + ano;
 
   return (
     <HomeStyle>
@@ -74,14 +59,11 @@ function CreateTripPage() {
           id="name"
           type="text"
           placeholder="Nome"
-          pattern={"(.*[a-z]){5}"}
           required
         ></InputStyle>
         <br />
         <SelectStyle>
-          <option value="Escolha um planeta" selected>
-            Escolha um planeta
-          </option>
+          <option value="Escolha um planeta">Escolha um planeta</option>
           <option key="Mercúrio" value="Mercúrio">
             Mercúrio
           </option>
@@ -117,7 +99,6 @@ function CreateTripPage() {
           value={form.date}
           onChange={onChange}
           id="date"
-          min={dataAtual}
           required
         ></InputStyle>
         <br />
@@ -128,7 +109,6 @@ function CreateTripPage() {
           id="description"
           type="text"
           placeholder="Descrição"
-          // pattern={"(?=^.{30,100}$)^([A-Za-z][\s]?)+$"}
           required
         ></InputStyle>
         <br />
@@ -139,7 +119,6 @@ function CreateTripPage() {
           id="durationIndays"
           type="text"
           placeholder="Duração em Dias"
-          min="50"
           required
         ></InputStyle>
         <br />
@@ -150,7 +129,7 @@ function CreateTripPage() {
         >
           Logout
         </ButtonsHome>
-        <ButtonsHome>Criar</ButtonsHome>
+        <ButtonsHome type="submit" value="Submit">Criar</ButtonsHome>
       </form>
     </HomeStyle>
   );
