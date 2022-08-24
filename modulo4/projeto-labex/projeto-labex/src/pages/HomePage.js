@@ -14,7 +14,7 @@ function HomePage() {
           goToListTripsPage(navigate);
         }}
       >
-        Trips
+        Viagens
       </ButtonsHome>
       <ButtonsHome
         onClick={() => {

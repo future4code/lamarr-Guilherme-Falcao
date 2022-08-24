@@ -11,7 +11,14 @@ export const Cards = styled.div`
   justify-content: center;
   height: 18vh;
   color: white;
-  font-size: 17px;
+  font-size: 17px;  
+`;
+export const CardsStyle = styled.section`
+  background-image: url(https://images3.alphacoders.com/812/812062.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 100%;
 `;
 export const HomeStyle = styled.section`
   width: 100vw;
@@ -19,6 +26,7 @@ export const HomeStyle = styled.section`
   background-image: url(https://images3.alphacoders.com/812/812062.png);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: 100%;
 `;
 export const ButtonsHome = styled.button`
   font-size: 14px;

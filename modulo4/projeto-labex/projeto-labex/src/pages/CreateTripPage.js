@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { goToHomePage } from "../rotas/Coordinator";
+import { goToHomePage, goToListTripsPage } from "../rotas/Coordinator";
 import useProtectedPage, { useForm } from "../hooks/useRequestData";
 import {
   AllHeaders,
@@ -20,7 +20,7 @@ function CreateTripPage() {
     planet: "",
     date: "",
     description: "",
-    durationIndays: "",
+    durationInDays: "",
   });
 
   const token = localStorage.getItem("token");
@@ -38,8 +38,12 @@ function CreateTripPage() {
         form,
         headers
       )
-      .then((response) => console.log(response.data), alert("Viagem enviada!"))
-      .catch((error) => console.log(error.message));
+      .then((response) => {
+        console.log(response.data);
+        alert("Viagem criada!");
+        goToListTripsPage(navigate);
+      })
+      .catch((error) => console.log(error));
     clear();
   };
   // const data = new Date();
@@ -47,7 +51,7 @@ function CreateTripPage() {
   // const mes = String(data.getMonth() + 1).padStart(2, "0");
   // const ano = data.getFullYear();
   // const dataAtual = dia + "/" + mes + "/" + ano;
-
+  console.log(form);
   return (
     <HomeStyle>
       <AllHeaders>Criar Viagem</AllHeaders>
@@ -62,7 +66,7 @@ function CreateTripPage() {
           required
         ></InputStyle>
         <br />
-        <SelectStyle>
+        <SelectStyle name="planet" onChange={onChange}>
           <option value="Escolha um planeta">Escolha um planeta</option>
           <option key="Mercúrio" value="Mercúrio">
             Mercúrio
@@ -113,8 +117,8 @@ function CreateTripPage() {
         ></InputStyle>
         <br />
         <InputStyle
-          name="durationIndays"
-          value={form.durationIndays}
+          name="durationInDays"
+          value={form.durationInDays}
           onChange={onChange}
           id="durationIndays"
           type="text"
@@ -122,15 +126,17 @@ function CreateTripPage() {
           required
         ></InputStyle>
         <br />
-        <ButtonsHome
-          onClick={() => {
-            goToHomePage(navigate);
-          }}
-        >
-          Logout
-        </ButtonsHome>
-        <ButtonsHome type="submit" value="Submit">Criar</ButtonsHome>
+
+        <ButtonsHome type="submit">Criar</ButtonsHome>
       </form>
+      <ButtonsHome
+        type="button"
+        onClick={() => {
+          goToHomePage(navigate);
+        }}
+      >
+        Logout
+      </ButtonsHome>
     </HomeStyle>
   );
 }

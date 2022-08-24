@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../constants/Constants";
 import {useRequestDataGet} from "../hooks/useRequestData";
 import { Cards } from "../pages/style";
-import { HomeStyle, HeaderTrips, ButtonsHome } from "../pages/style";
+import { CardsStyle, HeaderTrips, ButtonsHome } from "../pages/style";
 
 function ListTripsPage() {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ function ListTripsPage() {
   })
 
   return (
-    <HomeStyle>
+    <CardsStyle>
       <HeaderTrips>Viagens</HeaderTrips>
 
         {isLoadingUser&&"viajando para a outra página..."}
@@ -46,7 +46,7 @@ function ListTripsPage() {
       >
         Inscrever-se
       </ButtonsHome>
-    </HomeStyle>
+    </CardsStyle>
   );
 }
 
