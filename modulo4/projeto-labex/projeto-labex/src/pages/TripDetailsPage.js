@@ -3,7 +3,8 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useProtectedPage from "../hooks/useRequestData";
-import { goToBack } from "../rotas/Coordinator";
+import { goToAdminHomePage, goToBack } from "../rotas/Coordinator";
+import { ButtonsHome, HeaderTrips, HomeStyle } from "./style";
 
 function TripDetailsPage() {
   const navigate = useNavigate();
@@ -27,21 +28,21 @@ function TripDetailsPage() {
   }, [])
 
   return (
-    <div>
-      <p>
-        TripDetailsPage.js → Para o administrador ver o detalhe de uma viagem
+    <HomeStyle>
+      <HeaderTrips>
+        Para o administrador ver o detalhe de uma viagem
         específica, bem como os candidatos que aplicaram para ela
-      </p>
-      <button
+      </HeaderTrips>
+      <ButtonsHome
         onClick={() => {
-          goToBack(navigate);
+          goToAdminHomePage(navigate);
         }}
       >
         Voltar
-      </button>
-      <button>Aprovar</button>
-      <button>Reprovar</button>
-    </div>
+      </ButtonsHome>
+      <ButtonsHome>Aprovar</ButtonsHome>
+      <ButtonsHome>Reprovar</ButtonsHome>
+    </HomeStyle>
   );
 }
 

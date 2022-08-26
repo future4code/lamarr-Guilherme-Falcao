@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { goToHomePage, goToListTripsPage } from "../rotas/Coordinator";
+import { goToBack, goToHomePage, goToListTripsPage, goToLoginPage } from "../rotas/Coordinator";
 import useProtectedPage, { useForm } from "../hooks/useRequestData";
 import {
   AllHeaders,
@@ -80,7 +80,7 @@ function CreateTripPage() {
           <option key="Marte" value="Marte">
             Marte
           </option>
-          <option key="Júpter" value="Júpter">
+          <option key="Júpiter" value="Júpiter">
             Júpter
           </option>
           <option key="Saturno" value="Saturno">
@@ -121,7 +121,7 @@ function CreateTripPage() {
           value={form.durationInDays}
           onChange={onChange}
           id="durationIndays"
-          type="text"
+          type="number"
           placeholder="Duração em Dias"
           required
         ></InputStyle>
@@ -132,10 +132,18 @@ function CreateTripPage() {
       <ButtonsHome
         type="button"
         onClick={() => {
-          goToHomePage(navigate);
+          goToLoginPage(navigate);
         }}
       >
         Logout
+      </ButtonsHome>
+      <ButtonsHome
+        type="button"
+        onClick={() => {
+          goToBack(navigate);
+        }}
+      >
+        Voltar
       </ButtonsHome>
     </HomeStyle>
   );

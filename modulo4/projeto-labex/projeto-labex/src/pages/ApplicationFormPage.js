@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useForm, useRequestDataGet } from "../hooks/useRequestData";
+import useProtectedPage, { useForm, useRequestDataGet } from "../hooks/useRequestData";
 import { goToBack } from "../rotas/Coordinator";
 import {
   AllHeaders,
@@ -13,6 +13,7 @@ import {
 import { BASE_URL } from "../constants/Constants";
 
 function ApplicationFormPage() {
+  useProtectedPage()
   const navigate = useNavigate();
 
   const [form, onChange, clear] = useForm({
@@ -27,30 +28,32 @@ function ApplicationFormPage() {
     event.preventDefault();
     axios
       .post(
-        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/guilherme_brazao_lamarr/trips/:id/apply",
+        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/guilherme_brazao_lamarr/trips/NoIFVcOiSgTKTIPVZwXS/apply",
         form
       )
       .then((response) => console.log(response.data))
       .catch((error) => console.log(error.message));
     clear();
   };
-
+  
   const [dataTripList] = useRequestDataGet(`${BASE_URL}trips`);
 
   const tripListForm =
     dataTripList &&
     dataTripList.trips.map((data) => {
       return <option key={data.id}>{data.name}</option>;
-    });
+    }
+    );
 
   return (
     <HomeStyle>
       <AllHeaders>Inscreva-se para uma viagem!</AllHeaders>
       <form onSubmit={subscript}>
-      <SelectStyle id="select">
-          <option selected>Escolha uma Viagem</option>{tripListForm}
-      </SelectStyle>
-      <br />
+        <SelectStyle id="select">
+          <option>Escolha uma Viagem</option>
+          {tripListForm}
+        </SelectStyle>
+        <br />
         <InputStyle
           name="name"
           value={form.name}
@@ -92,8 +95,11 @@ function ApplicationFormPage() {
           required
         ></InputStyle>
         <br />
-        <SelectStyle name="paises" id="paises">
-          <option value="Escolha um País" selected="selected">
+        <SelectStyle 
+        name="country" id="paises"
+        onChange={onChange}
+        type="option">
+          <option value="Escolha um País">
             Escolha um país
           </option>
           <option value="Afeganistão">Afeganistão</option>

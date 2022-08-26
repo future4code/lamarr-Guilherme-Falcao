@@ -9,9 +9,29 @@ export const Cards = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 18vh;
+  height: 20vh;
+  width: 50vw;
   color: white;
-  font-size: 17px;  
+  font-size: 17px;
+`;
+export const TripsAdm = styled.div`
+  background-color: black;
+  border-radius: 10px;
+  opacity: 0.7;
+  margin: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  height: 7vh;
+  width: 35vw;
+  color: white;
+  font-size: 20px;
+  :hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 0.2s;
+  }
 `;
 export const CardsStyle = styled.section`
   background-image: url(https://images3.alphacoders.com/812/812062.png);
@@ -19,6 +39,12 @@ export const CardsStyle = styled.section`
   background-size: cover;
   background-attachment: fixed;
   background-position: 100%;
+`;
+export const CardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 export const HomeStyle = styled.section`
   width: 100vw;
@@ -60,6 +86,10 @@ export const AllHeaders = styled.h1`
   padding-top: 8vw;
   color: whitesmoke;
   font-size: 32px;
+`;
+export const AdminDelete = styled.div`
+  display: flex;
+  align-items: center;
 `;
 export const HeaderTrips = styled.h1`
   padding: 4px;
