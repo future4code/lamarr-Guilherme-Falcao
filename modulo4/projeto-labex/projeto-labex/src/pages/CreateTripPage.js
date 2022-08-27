@@ -1,6 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { goToBack, goToHomePage, goToListTripsPage, goToLoginPage } from "../rotas/Coordinator";
+import {
+  goToBack,
+  goToHomePage,
+  goToListTripsPage,
+  goToLoginPage,
+} from "../rotas/Coordinator";
 import useProtectedPage, { useForm } from "../hooks/useRequestData";
 import {
   AllHeaders,

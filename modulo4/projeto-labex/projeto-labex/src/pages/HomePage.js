@@ -10,21 +10,20 @@ function HomePage() {
       <NameHome>
         <h1>LabeX</h1>
         <ButtonsHome
-        onClick={() => {
-          goToListTripsPage(navigate);
-        }}
-      >
-        Viagens
-      </ButtonsHome>
-      <ButtonsHome
-        onClick={() => {
-          goToLoginPage(navigate);
-        }}
-      >
-        Admin
-      </ButtonsHome>
+          onClick={() => {
+            goToListTripsPage(navigate);
+          }}
+        >
+          Viagens
+        </ButtonsHome>
+        <ButtonsHome
+          onClick={() => {
+            goToLoginPage(navigate);
+          }}
+        >
+          Admin
+        </ButtonsHome>
       </NameHome>
-
     </HomeStyle>
   );
 }

@@ -1,7 +1,10 @@
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import useProtectedPage, { useForm, useRequestDataGet } from "../hooks/useRequestData";
+import useProtectedPage, {
+  useForm,
+  useRequestDataGet,
+} from "../hooks/useRequestData";
 import { goToBack } from "../rotas/Coordinator";
 import {
   AllHeaders,
@@ -13,7 +16,7 @@ import {
 import { BASE_URL } from "../constants/Constants";
 
 function ApplicationFormPage() {
-  useProtectedPage()
+  useProtectedPage();
   const navigate = useNavigate();
 
   const [form, onChange, clear] = useForm({
@@ -35,21 +38,20 @@ function ApplicationFormPage() {
       .catch((error) => console.log(error.message));
     clear();
   };
-  
+
   const [dataTripList] = useRequestDataGet(`${BASE_URL}trips`);
 
   const tripListForm =
     dataTripList &&
     dataTripList.trips.map((data) => {
       return <option key={data.id}>{data.name}</option>;
-    }
-    );
+    });
 
   return (
     <HomeStyle>
       <AllHeaders>Inscreva-se para uma viagem!</AllHeaders>
       <form onSubmit={subscript}>
-        <SelectStyle id="select">
+        <SelectStyle id="select" required>
           <option>Escolha uma Viagem</option>
           {tripListForm}
         </SelectStyle>
@@ -95,13 +97,14 @@ function ApplicationFormPage() {
           required
         ></InputStyle>
         <br />
-        <SelectStyle 
-        name="country" id="paises"
-        onChange={onChange}
-        type="option">
-          <option value="Escolha um País">
-            Escolha um país
-          </option>
+        <SelectStyle
+          name="country"
+          id="paises"
+          onChange={onChange}
+          type="option"
+          required
+        >
+          <option value="Escolha um País">Escolha um país</option>
           <option value="Afeganistão">Afeganistão</option>
           <option value="África do Sul">África do Sul</option>
           <option value="Albânia">Albânia</option>

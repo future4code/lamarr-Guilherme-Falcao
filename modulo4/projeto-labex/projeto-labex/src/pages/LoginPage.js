@@ -1,7 +1,11 @@
 import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { goToAdminHomePage, goToBack, goToHomePage } from "../rotas/Coordinator";
+import {
+  goToAdminHomePage,
+  goToBack,
+  goToHomePage,
+} from "../rotas/Coordinator";
 import { useForm } from "../hooks/useRequestData";
 import { AllHeaders, HomeStyle, InputLogin, ButtonsHome } from "../pages/style";
 
@@ -11,7 +15,7 @@ function LoginPage() {
   const [form, onChange, clear] = useForm({ email: "", password: "" });
 
   const login = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     axios
       .post(
         "https://us-central1-labenu-apis.cloudfunctions.net/labeX/guilherme_brazao_lamarr/login",
@@ -19,7 +23,7 @@ function LoginPage() {
       )
       .then((response) => {
         localStorage.setItem("token", response.data.token);
-        navigate("/admin/trips/list")
+        navigate("/admin/trips/list");
       })
       .catch((error) => {
         alert("Email e/ou senha incorretos", error.message);
@@ -60,11 +64,7 @@ function LoginPage() {
         >
           Voltar
         </ButtonsHome>
-        <ButtonsHome
-          type="submit"
-        >
-          Fazer login
-        </ButtonsHome>
+        <ButtonsHome type="submit">Fazer login</ButtonsHome>
       </form>
     </HomeStyle>
   );

@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { FaTrashAlt } from "react-icons/fa";
 import {
   AllHeaders,
-  HomeStyle,
   ButtonsHome,
   TripsAdm,
   CardContainer,
@@ -13,7 +12,6 @@ import {
   CardsStyle,
 } from "../pages/style";
 import {
-  goToAdminHomePage,
   goToCreateTripPage,
   goToHomePage,
   goToListTripsPage,
@@ -22,7 +20,6 @@ import {
 } from "../rotas/Coordinator";
 import useProtectedPage, { useRequestDataGet } from "../hooks/useRequestData";
 import { BASE_URL } from "../constants/Constants";
-import { clear } from "@testing-library/user-event/dist/clear";
 
 function AdminHomePage() {
   const navigate = useNavigate();
@@ -35,6 +32,8 @@ function AdminHomePage() {
     },
   };
 
+  const [dataTripList] = useRequestDataGet(`${BASE_URL}trips/`);
+
   const deleteTrip = (id) => {
     axios
       .delete(
@@ -42,42 +41,18 @@ function AdminHomePage() {
         headers
       )
       .then((response) => console.log(response.data), alert("Viagem apagada!"));
-    goToListTripsPage(navigate)
-    .catch((error) => console.log(error.message));
-    clear();
+    goToListTripsPage(navigate).catch((error) => console.log(error.message));
   };
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    axios
-      .get(
-        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/guilherme_brazao_lamarr/trip/NoIFVcOiSgTKTIPVZwXS",
-        {
-          headers: {
-            auth: token,
-          },
-        }
-      )
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log("Deu erro: ", error.response);
-      });
-  }, []);
-
-  const [dataTripList] = useRequestDataGet(`${BASE_URL}trips`);
 
   const selectTrip =
     dataTripList &&
     dataTripList.trips.map((data) => {
       return (
-        <AdminDelete>
+        <AdminDelete key={data.id}>
           <TripsAdm
             key={data.id}
             onClick={() => {
-              goToTripDetailsPage(navigate);
+              goToTripDetailsPage(navigate, data.id);
             }}
           >
             {data.name}
@@ -86,7 +61,7 @@ function AdminHomePage() {
             onClick={() => {
               deleteTrip(data.id);
             }}
-            class="trashIcon"
+            className="trashIcon"
           ></FaTrashAlt>{" "}
         </AdminDelete>
       );
