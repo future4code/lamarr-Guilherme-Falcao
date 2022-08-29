@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import {
   goToBack,
-  goToHomePage,
   goToListTripsPage,
   goToLoginPage,
 } from "../rotas/Coordinator";
@@ -51,12 +50,7 @@ function CreateTripPage() {
       .catch((error) => console.log(error));
     clear();
   };
-  // const data = new Date();
-  // const dia = String(data.getDate()).padStart(2, "0");
-  // const mes = String(data.getMonth() + 1).padStart(2, "0");
-  // const ano = data.getFullYear();
-  // const dataAtual = dia + "/" + mes + "/" + ano;
-  console.log(form);
+
   return (
     <HomeStyle>
       <AllHeaders>Criar Viagem</AllHeaders>
