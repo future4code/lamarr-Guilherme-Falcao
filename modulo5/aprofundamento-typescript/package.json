@@ -1,0 +1,18 @@
+{
+  "name": "aprofundamento-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node ./build/index.js",
+    "exercicio1": "tsc && node ./build/exercicio-1.js",
+    "exercicio2": "tsc && node ./build/exercicio-2.js",
+    "exercicio3": "tsc && node ./build/exercicio-3.js",
+    "exercicio4": "tsc && node ./build/exercicio-4.js"
+  },
+  "author": "Guilherme Brazão",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.8.4"
+  }
+}
