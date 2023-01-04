@@ -1,0 +1,22 @@
+GET https://viacep.com.br/ws/13321550/json/
+Content-Type: application/json
+
+###
+
+// Exercicio 1
+
+POST http://localhost:3003/test
+Content-Type: application/json
+
+{
+    "cep":"13321550"
+}
+
+###
+
+POST http://localhost:3003/userfulladdress
+Content-Type: application/json
+
+{
+    "cep":"13321550"
+}
