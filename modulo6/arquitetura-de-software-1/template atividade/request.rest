@@ -1,0 +1,10 @@
+POST http://localhost:3003/createUser 
+Content-Type: application/json
+
+{
+	"name": "bonovox",
+	"email": "bonovox@gg.com",
+	"password": "159456"	
+}
+###
+GET http://localhost:3003/getUsers 
